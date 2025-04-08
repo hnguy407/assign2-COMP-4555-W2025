@@ -17,7 +17,7 @@ const PaintingView = (props) => {
                     </div>
 
                     <div className=" column middle-pane">
-                        <PaintingList include-sorting-header='true'/>
+                        {/* <PaintingList include-sorting-header='true'/> */}
                     </div>
 
                 </div>

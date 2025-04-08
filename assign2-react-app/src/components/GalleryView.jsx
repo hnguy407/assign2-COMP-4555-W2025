@@ -26,7 +26,7 @@ const GalleryView = (props) => {
                 </div>
 
                 <div className=" column ">
-                    <PaintingList gallery={selected} />
+                    <PaintingList gallery={selected} filter_method='by_gallery' />
                 </div>
             </div>
         </div>

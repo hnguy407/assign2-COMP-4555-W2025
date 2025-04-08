@@ -9,7 +9,7 @@ const ArtistListItem = (props) => {
     return (
         <li className="box">
                 <button className="button is-fullwidth"  onClick={handleClick}>
-                    <span className=" font-medium">{props.artist.firstName}</span>
+                    <span className=" font-medium">{props.artist.firstName + ' ' + props.artist.lastName}</span>
                 </button>
         </li>
         

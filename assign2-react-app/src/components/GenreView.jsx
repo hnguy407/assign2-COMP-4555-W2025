@@ -26,7 +26,7 @@ const GenreView = (props) => {
 
                     <div className=" column middle-pane">
                         <GenreInfo genre={selected} />
-                        <PaintingList genre={selected} include-sorting-header='true'/>
+                        <PaintingList genre={selected} include-sorting-header='true' filter_method='by_genre' />
                     </div>
 
                 </div>

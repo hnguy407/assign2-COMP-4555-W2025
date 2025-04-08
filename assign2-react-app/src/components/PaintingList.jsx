@@ -1,7 +1,9 @@
 import PaintingListHeader from "./PaintingListHeader"
+import { useEffect, useState } from "react"
+import supabase from '../db'
 
-
-const PaintingList = () => {
+const PaintingList = (props) => {
+    const [paintings, set_paintings] = useState([])
 
 
     return (

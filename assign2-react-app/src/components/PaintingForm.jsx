@@ -5,27 +5,28 @@ const PaintingForm = (props) => {
     const handleClick = () => {
 
     }
-    props.galleries.sort( (a, b) => {
-        if(a.galleryName < b.galleryName) return -1
-        if(a.galleryName > b.galleryName) return 1
-        return 0
+    //leave unsorted for now I dont want other pages to be sorted so ill have to make deeper copipes before i sort.
+    // props.galleries.sort( (a, b) => {
+    //     if(a.galleryName < b.galleryName) return -1
+    //     if(a.galleryName > b.galleryName) return 1
+    //     return 0
         
-        })
+    //     })
     
     
-    props.genres.sort( (a, b) => {
-        if(a.genreName < b.genreName) return -1
-        if(a.genreName > b.genreName) return 1
-        return 0
+    // props.genres.sort( (a, b) => {
+    //     if(a.genreName < b.genreName) return -1
+    //     if(a.genreName > b.genreName) return 1
+    //     return 0
         
-        })
+    //     })
     
-    props.artists.sort( (a, b) => {
-        if(a.firstName < b.firstName) return -1
-        if(a.firstName > b.firstName) return 1
-        return 0
+    // props.artists.sort( (a, b) => {
+    //     if(a.firstName < b.firstName) return -1
+    //     if(a.firstName > b.firstName) return 1
+    //     return 0
         
-        })
+    //     })
     
 
     return (
