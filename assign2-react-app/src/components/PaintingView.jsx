@@ -2,7 +2,7 @@ import PaintingForm from "./PaintingForm"
 import PaintingList from "./PaintingList"
 
 
-const PaintingView = () => {
+const PaintingView = (props) => {
 
 
     return (
@@ -13,7 +13,7 @@ const PaintingView = () => {
                 <h1 className="title has-text-centered">Painting View</h1>
                 <div className="columns is-8 box ">
                     <div className="column is-one-quarter">
-                        <PaintingForm />
+                        <PaintingForm genres={props.genres} galleries={props.galleries} artists={props.artists} />
                     </div>
 
                     <div className=" column middle-pane">

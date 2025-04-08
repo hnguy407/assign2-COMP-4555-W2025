@@ -15,7 +15,7 @@ import PaintingModal from './components/PaintingModal'
 import supabase from './db'
 
 function App() {
-  const [view_key, set_view_key] = useState('genre_view')
+  const [view_key, set_view_key] = useState('painting_view')
   const [logged_in, set_logged_in] = useState(true)
   const [favourites_modal, set_favourites_modal] = useState(false)
   const [galleries, set_galleries] = useState([])
@@ -76,7 +76,7 @@ function App() {
                   'gallery_view': <GalleryView galleries={galleries} />,
                   'genre_view': <GenreView genres={genres} />,
                   'artist_view': <ArtistView artists={artists} />,
-                  'painting_view': <PaintingView />
+                  'painting_view': <PaintingView genres={genres} galleries={galleries} artists={artists} />
   }
 
   return (
