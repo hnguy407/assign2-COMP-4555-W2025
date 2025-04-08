@@ -5,7 +5,7 @@ const GalleryListItem = (props) => {
     const handleClick = () => {
         props.change_selected(props.gallery)
     }
-    console.log(props)
+    // console.log(props)
 
     return (
         <li className="box">

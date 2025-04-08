@@ -2,7 +2,7 @@
 
 
 const GalleryInfo = (props) => {
-    console.log(props)
+    // console.log(props)
     let gallery = props.gallery ?? {galleryName:'No Gallery Selected',
                                     galleryNativeName:'',
                                     galleryCity:'',

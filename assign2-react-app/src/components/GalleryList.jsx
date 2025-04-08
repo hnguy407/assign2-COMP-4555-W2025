@@ -2,8 +2,8 @@ import GalleryListItem from "./GalleryListItem"
 
 
 const GalleryList = (props) => {
-    console.log('from lists')
-    console.log(props)
+
+    // console.log(props)
 
     return (
 

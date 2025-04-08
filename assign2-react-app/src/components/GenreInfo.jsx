@@ -1,6 +1,6 @@
 
 const GenreInfo = (props) => {
-    console.log(props)
+    // console.log(props)
     let genre = props.genre ?? {genreName:'No Genre Selected',
                                     description:'',
                                     wikiLink:'',

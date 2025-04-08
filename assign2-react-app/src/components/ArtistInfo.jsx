@@ -2,7 +2,7 @@
 
 
 const ArtistInfo = (props) => {
-    console.log(props)
+    // console.log(props)
     let artist = props.artist ?? {firstName:'No Artist Selected',
                                     lastName:'',
                                     nationality:'',

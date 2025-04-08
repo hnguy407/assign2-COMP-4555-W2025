@@ -27,7 +27,7 @@ const ArtistView = (props) => {
                     </div>
 
                     <div className=" column ">
-                        <PaintingList artist={selected} filter_method='by_artist' />
+                        <PaintingList artist={selected} />
                     </div>
                 </div>
             </div>

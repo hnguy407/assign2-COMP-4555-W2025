@@ -5,7 +5,7 @@ const GenreListItem = (props) => {
     const handleClick = () => {
         props.change_selected(props.genre)
     }
-    console.log(props)
+    // console.log(props)
 
     return (
         <li className="box">
