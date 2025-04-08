@@ -5,7 +5,7 @@ const LoginView = () => {
 
 
     return (
-        <p></p>
+        <p>login view</p>
 
         
     )

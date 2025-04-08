@@ -10,7 +10,7 @@ const PaintingView = () => {
         <div className="container">
     
             <div className="container">
-                <h1 className="title has-text-centered">Genre View</h1>
+                <h1 className="title has-text-centered">Painting View</h1>
                 <div className="columns is-8 box ">
                     <div className="column is-one-quarter">
                         <PaintingForm />
