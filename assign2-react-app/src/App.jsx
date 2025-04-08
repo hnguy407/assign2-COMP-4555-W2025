@@ -24,7 +24,7 @@ function App() {
   
   //initializing arrays via api
   useEffect( () =>{
-    selectArtists();
+    // selectArtists();
     if (galleries.length <= 0) {
       console.log('fetching galleries')
       fetch('https://assignment-1-comp-4513-w2025-1.onrender.com/api/galleries')
