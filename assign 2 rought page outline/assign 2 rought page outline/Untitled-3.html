@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <!-- Link to Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            margin-top: 60px; /* Space for sticky navbar */
+        }
+        .artist-container {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping */
+            width: 100%; /* Ensure it takes full width */
+            margin-top: 30px;
+        }
+        .artist-pane {
+            flex-grow: 1; /* Allow panes to grow and fill the available space */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in the element's total width */
+        }
+        .artist-info {
+            flex-grow: 2; /* Give more space to the artist info pane */
+        }
+        /* Updated painting list to display vertically */
+        .paintings-list {
+            display: flex;
+            flex-direction: column; /* Vertical layout */
+            gap: 15px;
+        }
+        .painting-item {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .painting-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Now static, without functionality) -->
+    <nav class="navbar is-primary">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-white">
+                Art Gallery
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Artist View Section -->
+        <div id="view-2" class="view" style="display: block;">
+            <h1 class="title has-text-centered">Artist View</h1>
+            <div class="artist-container">
+                <!-- Artist Selector Pane -->
+                <div class="artist-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Select Artist</h2>
+                        <div class="field">
+                            <div class="control">
+                                <div class="select">
+                                    <select id="artist-select">
+                                        <option>Select an artist</option>
+                                        <option value="artist-1">Claude Monet</option>
+                                        <option value="artist-2">Salvador Dalí</option>
+                                        <option value="artist-3">Leonardo da Vinci</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artist Info Pane -->
+                <div class="artist-info artist-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Artist Info</h2>
+                        <div id="artist-info">
+                            <p>Select an artist to view information.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paintings List Pane -->
+                <div class="artist-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Paintings</h2>
+                        <div id="paintings-list" class="paintings-list">
+                            <p>Select an artist to view their paintings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for Artist Functionality -->
+    <script>
+        const artistData = {
+            "artist-1": {
+                name: "Claude Monet",
+                biography: "Claude Monet was a founder of French Impressionist painting. He is known for his series paintings that captured the changing qualities of light, such as 'Water Lilies' and 'Impression, Sunrise'.",
+                paintings: [
+                    { title: "Impression, Sunrise", image: "https://via.placeholder.com/300x200?text=Impression+Sunrise" },
+                    { title: "Water Lilies", image: "https://via.placeholder.com/300x200?text=Water+Lilies" },
+                    { title: "Rouen Cathedral Series", image: "https://via.placeholder.com/300x200?text=Rouen+Cathedral" }
+                ]
+            },
+            "artist-2": {
+                name: "Salvador Dalí",
+                biography: "Salvador Dalí was a Spanish surrealist artist known for his eccentric works that explored the subconscious mind, with works such as 'The Persistence of Memory'.",
+                paintings: [
+                    { title: "The Persistence of Memory", image: "https://via.placeholder.com/300x200?text=The+Persistence+of+Memory" },
+                    { title: "The Sacrament of the Last Supper", image: "https://via.placeholder.com/300x200?text=The+Sacrament+of+the+Last+Supper" },
+                    { title: "Dream Caused by the Flight of a Bee", image: "https://via.placeholder.com/300x200?text=Dream+Caused+by+the+Flight+of+a+Bee" }
+                ]
+            },
+            "artist-3": {
+                name: "Leonardo da Vinci",
+                biography: "Leonardo da Vinci was an Italian Renaissance artist, inventor, and polymath. He is best known for his paintings 'Mona Lisa' and 'The Last Supper'.",
+                paintings: [
+                    { title: "Mona Lisa", image: "https://via.placeholder.com/300x200?text=Mona+Lisa" },
+                    { title: "The Last Supper", image: "https://via.placeholder.com/300x200?text=The+Last+Supper" },
+                    { title: "Vitruvian Man", image: "https://via.placeholder.com/300x200?text=Vitruvian+Man" }
+                ]
+            }
+        };
+
+        const artistSelect = document.getElementById("artist-select");
+        const artistInfo = document.getElementById("artist-info");
+        const paintingsList = document.getElementById("paintings-list");
+
+        artistSelect.addEventListener("change", function() {
+            const selectedArtist = this.value;
+            if (artistData[selectedArtist]) {
+                const artist = artistData[selectedArtist];
+                // Update Artist Info
+                artistInfo.innerHTML = `<h3>${artist.name}</h3><p>${artist.biography}</p>`;
+                
+                // Update Paintings List
+                paintingsList.innerHTML = artist.paintings.map(painting => `
+                    <div class="painting-item">
+                        <img src="${painting.image}" alt="${painting.title}">
+                        <h4>${painting.title}</h4>
+                    </div>
+                `).join('');
+            } else {
+                artistInfo.innerHTML = `<p>Select an artist to view information.</p>`;
+                paintingsList.innerHTML = `<p>Select an artist to view their paintings.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

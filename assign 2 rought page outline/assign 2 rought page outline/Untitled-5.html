@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery - Painting Search</title>
+    <!-- Link to Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            margin-top: 60px; /* Space for sticky navbar */
+        }
+        .search-container {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .search-pane {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .search-results {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .painting-item {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .painting-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Now static, without functionality) -->
+    <nav class="navbar is-primary">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-white">
+                Art Gallery
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Painting Search Section -->
+        <div id="view-2" class="view" style="display: block;">
+            <h1 class="title has-text-centered">Art Gallery - Painting Search</h1>
+            <div class="search-container">
+                <!-- Painting Search Pane -->
+                <div class="search-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Search for a Painting</h2>
+                        <div class="field">
+                            <div class="control">
+                                <input id="search-input" class="input" type="text" placeholder="Enter painting title or artist" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Results Pane -->
+                <div class="search-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Search Results</h2>
+                        <div id="search-results" class="search-results">
+                            <p>Start typing to search for paintings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for Painting Search Functionality -->
+    <script>
+        const paintingsData = [
+            { title: "Impression, Sunrise", artist: "Claude Monet", image: "https://via.placeholder.com/300x200?text=Impression+Sunrise" },
+            { title: "Ballet Rehearsal", artist: "Edgar Degas", image: "https://via.placeholder.com/300x200?text=Ballet+Rehearsal" },
+            { title: "Water Lilies", artist: "Claude Monet", image: "https://via.placeholder.com/300x200?text=Water+Lilies" },
+            { title: "The Persistence of Memory", artist: "Salvador Dalí", image: "https://via.placeholder.com/300x200?text=The+Persistence+of+Memory" },
+            { title: "The Scream", artist: "Edvard Munch", image: "https://via.placeholder.com/300x200?text=The+Scream" },
+            { title: "Les Demoiselles d'Avignon", artist: "Pablo Picasso", image: "https://via.placeholder.com/300x200?text=Les+Demoiselles+d'Avignon" },
+            { title: "Mona Lisa", artist: "Leonardo da Vinci", image: "https://via.placeholder.com/300x200?text=Mona+Lisa" },
+            { title: "The Creation of Adam", artist: "Michelangelo", image: "https://via.placeholder.com/300x200?text=The+Creation+of+Adam" }
+        ];
+
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+
+        searchInput.addEventListener("input", function() {
+            const query = searchInput.value.toLowerCase();
+            const filteredPaintings = paintingsData.filter(painting =>
+                painting.title.toLowerCase().includes(query) || painting.artist.toLowerCase().includes(query)
+            );
+            
+            if (filteredPaintings.length > 0) {
+                searchResults.innerHTML = filteredPaintings.map(painting => `
+                    <div class="painting-item">
+                        <img src="${painting.image}" alt="${painting.title}">
+                        <h4>${painting.title}</h4>
+                        <p>Artist: ${painting.artist}</p>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = "<p>No paintings found matching your search.</p>";
+            }
+        });
+    </script>
+</body>
+</html>

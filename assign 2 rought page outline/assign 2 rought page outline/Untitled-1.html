@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Link to Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half login-container">
+                <div class="box">
+                    <h1 class="title is-4 has-text-centered">Login</h1>
+                    <form action="" method="POST">
+                        <div class="field">
+                            <label class="label">Username</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter your username" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                                <input class="input" type="password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth" type="submit">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="has-text-centered">
+                        <p><a href="#">Forgot your password?</a></p>
+                        <p>Don't have an account? <a href="#">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

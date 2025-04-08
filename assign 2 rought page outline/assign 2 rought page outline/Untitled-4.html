@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery - Genre View</title>
+    <!-- Link to Bulma CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            margin-top: 60px; /* Space for sticky navbar */
+        }
+        .genre-container {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping */
+            width: 100%; /* Ensure it takes full width */
+            margin-top: 30px;
+        }
+        .genre-pane {
+            flex-grow: 1; /* Allow panes to grow and fill the available space */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in the element's total width */
+        }
+        .genre-info {
+            flex-grow: 2; /* Give more space to the genre info pane */
+        }
+        /* Updated painting list to display vertically */
+        .paintings-list {
+            display: flex;
+            flex-direction: column; /* Vertical layout */
+            gap: 15px;
+        }
+        .painting-item {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .painting-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Now static, without functionality) -->
+    <nav class="navbar is-primary">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-white">
+                Art Gallery
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Genre View Section -->
+        <div id="view-2" class="view" style="display: block;">
+            <h1 class="title has-text-centered">Art Gallery - Genre View</h1>
+            <div class="genre-container">
+                <!-- Genre List Pane -->
+                <div class="genre-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Select Genre</h2>
+                        <div class="field">
+                            <div class="control">
+                                <div class="select">
+                                    <select id="genre-select">
+                                        <option>Select a genre</option>
+                                        <option value="genre-1">Impressionism</option>
+                                        <option value="genre-2">Surrealism</option>
+                                        <option value="genre-3">Renaissance</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Genre Info Pane -->
+                <div class="genre-info genre-pane">
+                    <div class="box">
+                        <h2 class="subtitle">Genre Info</h2>
+                        <div id="genre-info">
+                            <p>Select a genre to view information.</p>
+                        </div>
+                    </div>
+
+                    <!-- Paintings List Pane -->
+                    <div class="box">
+                        <h2 class="subtitle">Paintings</h2>
+                        <div id="paintings-list" class="paintings-list">
+                            <p>Select a genre to view its paintings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for Genre Functionality -->
+    <script>
+        const genreData = {
+            "genre-1": {
+                name: "Impressionism",
+                description: "Impressionism is a 19th-century art movement known for its loose brushwork and emphasis on light and color.",
+                paintings: [
+                    { title: "Impression, Sunrise", artist: "Claude Monet", image: "https://via.placeholder.com/300x200?text=Impression+Sunrise" },
+                    { title: "Ballet Rehearsal", artist: "Edgar Degas", image: "https://via.placeholder.com/300x200?text=Ballet+Rehearsal" },
+                    { title: "Water Lilies", artist: "Claude Monet", image: "https://via.placeholder.com/300x200?text=Water+Lilies" }
+                ]
+            },
+            "genre-2": {
+                name: "Surrealism",
+                description: "Surrealism is a 20th-century avant-garde movement that sought to resolve the previously contradictory conditions of dream and reality.",
+                paintings: [
+                    { title: "The Persistence of Memory", artist: "Salvador Dalí", image: "https://via.placeholder.com/300x200?text=The+Persistence+of+Memory" },
+                    { title: "The Elephants", artist: "Salvador Dalí", image: "https://via.placeholder.com/300x200?text=The+Elephants" },
+                    { title: "The Sacrament of the Last Supper", artist: "Salvador Dalí", image: "https://via.placeholder.com/300x200?text=The+Sacrament+of+the+Last+Supper" }
+                ]
+            },
+            "genre-3": {
+                name: "Renaissance",
+                description: "Renaissance art spans from the 14th to the 17th century, highlighting realism, perspective, and human anatomy.",
+                paintings: [
+                    { title: "Mona Lisa", artist: "Leonardo da Vinci", image: "https://via.placeholder.com/300x200?text=Mona+Lisa" },
+                    { title: "The Last Supper", artist: "Leonardo da Vinci", image: "https://via.placeholder.com/300x200?text=The+Last+Supper" },
+                    { title: "The Creation of Adam", artist: "Michelangelo", image: "https://via.placeholder.com/300x200?text=The+Creation+of+Adam" }
+                ]
+            }
+        };
+
+        const genreSelect = document.getElementById("genre-select");
+        const genreInfo = document.getElementById("genre-info");
+        const paintingsList = document.getElementById("paintings-list");
+
+        genreSelect.addEventListener("change", function() {
+            const selectedGenre = this.value;
+            if (genreData[selectedGenre]) {
+                const genre = genreData[selectedGenre];
+                // Update Genre Info
+                genreInfo.innerHTML = `<h3>${genre.name}</h3><p>${genre.description}</p>`;
+                
+                // Update Paintings List
+                paintingsList.innerHTML = genre.paintings.map(painting => `
+                    <div class="painting-item">
+                        <img src="${painting.image}" alt="${painting.title}">
+                        <h4>${painting.title}</h4>
+                        <p>Artist: ${painting.artist}</p>
+                    </div>
+                `).join('');
+            } else {
+                genreInfo.innerHTML = `<p>Select a genre to view information.</p>`;
+                paintingsList.innerHTML = `<p>Select a genre to view its paintings.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
