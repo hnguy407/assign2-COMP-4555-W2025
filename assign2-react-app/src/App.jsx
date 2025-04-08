@@ -8,7 +8,7 @@ import LoginView from './components/LoginView'
 import GalleryView from './components/GalleryView'
 import GenreView from './components/GenreView'
 import ArtistView from './components/ArtistView'
-import PaintingView from './components/PaintingView.Jsx'
+import PaintingView from './components/PaintingView'
 import FavouritesModal from './components/FavouritesModal'
 import PaintingModal from './components/PaintingModal'
 
