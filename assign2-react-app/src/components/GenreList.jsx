@@ -8,11 +8,9 @@ const GenreList = (props) => {
 
         <div className="menu">
             <ul className="column is-multiline">
-                <GenreListItem genre='Genre1' />
-                <GenreListItem genre='Genre2' />
-                <GenreListItem genre='Genre3' />
-                <GenreListItem genre='Genre4' />
-                <GenreListItem genre='Genre5' />
+            {props.genres.map(g => 
+                <GenreListItem genre={g} change_selected={props.change_selected} />
+            )}
             </ul>
         </div>
     )

@@ -1,9 +1,11 @@
 
 
 
-const Header = () => {
+const Header = (props) => {
     const handleClick = (e) => {
-        console.log(e.target.value)
+        const key = e.target.value
+        console.log(key)
+        props.handle_view_change(key)
     }
 
     return (
@@ -17,11 +19,11 @@ const Header = () => {
       
         <div id="navbarBasic" className="navbar-menu">
           <div className="navbar-start">
-            <div className="navbar-item"><button className="" onClick={handleClick} value={'artist-view'}>Artists</button></div>
-            <div className="navbar-item"><button className="" onClick={handleClick} value={'painting-view'}>Paintings</button></div>
-            <div className="navbar-item"><button className="" onClick={handleClick} value={'gallery-view'}>Galleries</button></div>
-            <div className="navbar-item"><button className="" onClick={handleClick} value={'genre-view'}>Genres</button></div>
-            <div className="navbar-item"><button className="" onClick={handleClick} value={'favourites-modal'}>Favourites</button></div>
+            <div className="navbar-item"><button className="" onClick={handleClick} value={'artist_view'}>Artists</button></div>
+            <div className="navbar-item"><button className="" onClick={handleClick} value={'painting_view'}>Paintings</button></div>
+            <div className="navbar-item"><button className="" onClick={handleClick} value={'gallery_view'}>Galleries</button></div>
+            <div className="navbar-item"><button className="" onClick={handleClick} value={'genre_view'}>Genres</button></div>
+            <div className="navbar-item"><button className="" onClick={handleClick} value={'favourites_modal'}>Favourites</button></div>
 
           </div>
 
